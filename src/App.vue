@@ -124,7 +124,7 @@ function getTodayDateString(): string {
 <template>
   <div class="h-dvh flex flex-col bg-slate-50 text-slate-900">
     <!-- Header -->
-    <header class="shrink-0 bg-white border-b border-slate-200 px-4 py-2.5 pt-[max(0.625rem,env(safe-area-inset-top))]">
+    <header class="shrink-0 bg-white border-b border-slate-200 px-4 py-2.5 pt-[max(0.625rem,env(safe-area-inset-top))] touch-none">
       <div class="flex flex-col items-center">
         <img :src="rimonLogo" alt="רימון בריאות ישראלית" class="h-12 w-12 object-contain" />
         <p class="text-[11px] text-slate-500 mt-1 tracking-wide">הזמנות סחורה</p>
@@ -132,7 +132,7 @@ function getTodayDateString(): string {
     </header>
 
     <!-- Main content area -->
-    <main class="flex-1 overflow-y-auto">
+    <main class="flex-1 overflow-y-auto overscroll-contain">
       <!-- Soon tab -->
       <div v-if="activeTab === 'soon'" class="flex flex-col items-center justify-center h-full text-center px-8">
         <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-4">
@@ -199,7 +199,7 @@ function getTodayDateString(): string {
 
     <!-- Action bar -->
     <div v-if="orderItemsCount > 0"
-      class="shrink-0 bg-white border-t border-slate-200 px-4 py-3">
+      class="shrink-0 bg-white border-t border-slate-200 px-4 py-3 touch-none">
       <button @click="showSendModal = true"
         class="w-full bg-emerald-600 text-white text-[15px] font-semibold py-3 rounded-lg active:bg-emerald-700 transition-colors flex items-center justify-center gap-2">
         <IconSend />
@@ -210,7 +210,7 @@ function getTodayDateString(): string {
     </div>
 
     <!-- Bottom tab bar -->
-    <nav class="shrink-0 bg-white border-t border-slate-200 pb-[env(safe-area-inset-bottom)]">
+    <nav class="shrink-0 bg-white border-t border-slate-200 pb-[env(safe-area-inset-bottom)] touch-none">
       <div class="grid grid-cols-3">
         <button v-for="tab in tabs" :key="tab.id" :class="[
           'relative flex flex-col items-center justify-center py-2.5 gap-1 transition-colors',
