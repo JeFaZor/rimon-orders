@@ -122,9 +122,9 @@ function getTodayDateString(): string {
 </script>
 
 <template>
-  <div class="h-screen flex flex-col bg-slate-50 text-slate-900">
+  <div class="h-dvh flex flex-col bg-slate-50 text-slate-900">
     <!-- Header -->
-    <header class="shrink-0 bg-white border-b border-slate-200 px-4 py-2.5">
+    <header class="shrink-0 bg-white border-b border-slate-200 px-4 py-2.5 pt-[max(0.625rem,env(safe-area-inset-top))]">
       <div class="flex flex-col items-center">
         <img :src="rimonLogo" alt="רימון בריאות ישראלית" class="h-12 w-12 object-contain" />
         <p class="text-[11px] text-slate-500 mt-1 tracking-wide">הזמנות סחורה</p>
@@ -210,7 +210,7 @@ function getTodayDateString(): string {
     </div>
 
     <!-- Bottom tab bar -->
-    <nav class="shrink-0 bg-white border-t border-slate-200">
+    <nav class="shrink-0 bg-white border-t border-slate-200 pb-[env(safe-area-inset-bottom)]">
       <div class="grid grid-cols-3">
         <button v-for="tab in tabs" :key="tab.id" :class="[
           'relative flex flex-col items-center justify-center py-2.5 gap-1 transition-colors',
