@@ -147,7 +147,7 @@ function getTodayDateString(): string {
       <!-- Vegetables tab -->
       <div v-else-if="activeTab === 'vegetables'" class="divide-y divide-slate-200/70 bg-white">
         <div v-for="item in vegetables" :key="item.id"
-          class="relative flex items-center px-4 py-3 transition-colors"
+          class="relative flex items-center px-4 py-3.5 transition-colors"
           :class="(quantities[item.id] ?? 0) > 0 ? 'bg-emerald-50/40' : ''">
           <!-- Active accent bar (RTL: on right) -->
           <span v-if="(quantities[item.id] ?? 0) > 0"
@@ -155,29 +155,29 @@ function getTodayDateString(): string {
 
           <!-- Item info -->
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="text-xl shrink-0 leading-none opacity-90" aria-hidden="true">{{ item.icon }}</span>
+            <span class="text-2xl shrink-0 leading-none opacity-90" aria-hidden="true">{{ item.icon }}</span>
             <div class="flex flex-col min-w-0 leading-tight">
               <div class="flex items-center gap-1.5">
-                <span class="text-[15px] font-medium text-slate-900 truncate">{{ item.name }}</span>
+                <span class="text-[17px] font-medium text-slate-900 truncate">{{ item.name }}</span>
                 <span v-if="item.isGradeB"
-                  class="shrink-0 text-[10px] font-semibold px-1.5 py-px rounded border border-slate-300 text-slate-600 bg-white">ב'</span>
+                  class="shrink-0 text-[11px] font-semibold px-1.5 py-px rounded border border-slate-300 text-slate-600 bg-white">ב'</span>
               </div>
-              <span class="text-[11px] text-slate-400 mt-0.5 tracking-wide">{{ item.unit }}</span>
+              <span class="text-[12px] text-slate-400 mt-0.5 tracking-wide">{{ item.unit }}</span>
             </div>
           </div>
 
           <!-- Quantity controls -->
-          <div class="flex items-center gap-1 shrink-0">
+          <div class="flex items-center gap-1.5 shrink-0">
             <button @click="decreaseQuantity(item.id)" aria-label="הפחת כמות"
-              class="w-8 h-8 rounded-md border border-slate-200 bg-white text-slate-600 text-base flex items-center justify-center active:bg-slate-100 disabled:opacity-30 transition-colors"
+              class="w-10 h-10 rounded-md border border-slate-200 bg-white text-slate-600 text-lg flex items-center justify-center active:bg-slate-100 disabled:opacity-30 transition-colors"
               :disabled="(quantities[item.id] ?? 0) === 0">
               −
             </button>
             <input type="number" inputmode="decimal" step="0.5" min="0" v-model.number="quantities[item.id]"
               @focus="selectAll" @blur="snapToHalf(item.id)"
-              class="w-11 h-8 text-center text-sm font-semibold text-slate-900 tabular-nums bg-transparent focus:outline-none focus:bg-slate-50 rounded-md" />
+              class="w-12 h-10 text-center text-base font-semibold text-slate-900 tabular-nums bg-transparent focus:outline-none focus:bg-slate-50 rounded-md" />
             <button @click="increaseQuantity(item.id)" aria-label="הוסף כמות"
-              class="w-8 h-8 rounded-md bg-slate-900 text-white text-base flex items-center justify-center active:bg-slate-700 transition-colors">
+              class="w-10 h-10 rounded-md bg-slate-900 text-white text-lg flex items-center justify-center active:bg-slate-700 transition-colors">
               +
             </button>
           </div>
