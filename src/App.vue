@@ -67,7 +67,7 @@ function increaseQuantity(itemId: string) {
   if (!quantities[itemId]) {
     quantities[itemId] = 0
   }
-  quantities[itemId] += 0.5
+  quantities[itemId] += 1
 }
 
 function decreaseQuantity(itemId: string) {
@@ -75,7 +75,7 @@ function decreaseQuantity(itemId: string) {
     quantities[itemId] = 0
   }
   if (quantities[itemId] > 0) {
-    quantities[itemId] -= 0.5
+    quantities[itemId] -= 1
   }
 }
 function sendOrder() {
@@ -168,16 +168,16 @@ function getTodayDateString(): string {
 
           <!-- Quantity controls -->
           <div class="flex items-center gap-1.5 shrink-0">
-            <button @click="decreaseQuantity(item.id)" aria-label="הפחת כמות"
-              class="w-10 h-10 rounded-md border border-slate-200 bg-white text-slate-600 text-lg flex items-center justify-center active:bg-slate-100 disabled:opacity-30 transition-colors"
+            <button @pointerdown.prevent="decreaseQuantity(item.id)" aria-label="הפחת כמות"
+              class="w-10 h-10 rounded-md border border-slate-200 bg-white text-slate-600 text-lg flex items-center justify-center active:bg-slate-100 disabled:opacity-30"
               :disabled="(quantities[item.id] ?? 0) === 0">
               −
             </button>
             <input type="number" inputmode="decimal" step="0.5" min="0" v-model.number="quantities[item.id]"
               @focus="selectAll" @blur="snapToHalf(item.id)"
               class="w-12 h-10 text-center text-base font-semibold text-slate-900 tabular-nums bg-transparent focus:outline-none focus:bg-slate-50 rounded-md" />
-            <button @click="increaseQuantity(item.id)" aria-label="הוסף כמות"
-              class="w-10 h-10 rounded-md bg-slate-900 text-white text-lg flex items-center justify-center active:bg-slate-700 transition-colors">
+            <button @pointerdown.prevent="increaseQuantity(item.id)" aria-label="הוסף כמות"
+              class="w-10 h-10 rounded-md bg-slate-900 text-white text-lg flex items-center justify-center active:bg-slate-700">
               +
             </button>
           </div>
