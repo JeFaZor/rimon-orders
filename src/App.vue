@@ -96,11 +96,18 @@ function sendOrder() {
   }
 
   const url = `https://wa.me/${SUPPLIERS.vegetables}?text=${encodeURIComponent(message)}`
-  window.open(url, '_blank')
+  window.location.href = url
+}
+function resetOrder() {
+ for (const key in quantities) {
+    quantities[key] = 0
+  }
+  notes.value = ''
 }
 function confirmSend() {
   sendOrder()
   showSendModal.value = false
+  resetOrder()
 }
 function selectAll(event: FocusEvent) {
   (event.target as HTMLInputElement).select()
